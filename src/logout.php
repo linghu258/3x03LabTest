@@ -1,10 +1,9 @@
-<?php 
-	session_start();
-
-	$_SESSION = array();
-
-	session_destroy();
-
-	header('location:index.php?logout=true');
-	exit;
-?>
+<!DOCTYPE html>
+<html>
+    <body>
+        <form method="POST" action="index.php">
+            <?php echo $_POST["searchItem"]?><BR>
+            <button type="submit">Return</button>
+        </form>
+    </body>
+</html>
