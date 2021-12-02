@@ -1,44 +1,32 @@
-<?php 
-	session_start();
-	
-	if(isset($_POST['submit']))
-	{
-		if((isset($_POST['text']) && $_POST['text'] !=''))
-		{
-			$text = trim($_POST['text']);
-			$errorMsg = "Login failed";
-		}
-	}
-?>
-
 <!DOCTYPE html>
 <html>
-<head>
-<link rel="stylesheet" href="style.css">
-</head>
+  <head>
+    <script>
+      var pattern = /<(.*)>/;
 
-<body>
-	
-	<div class="container">
-		<?php 
-			if(isset($errorMsg))
-			{
-				echo "<div class='error-msg'>";
-				echo $errorMsg;
-				echo "</div>";
-				unset($errorMsg);
-			}
-		?>
-		<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
-			<div class="field-container">
-				<label>Search:</label>
-				<input type="text" name="text">
-			</div>
-			<div class="field-container">
-				<button type="submit" name="submit">Search</button>
-			</div>
-			
-		</form>
-	</div>
-</body>
+      function validateForm() {
+          let x = document.forms["myForm"]["searchItem"];
+          if (x.value == "") {
+              alert("Invalid Inout");
+              return false;
+          }
+          else {
+              if (pattern.test(x.value) == true) {
+                  x.value = "";
+                  return false;
+              }
+          }
+      }     
+    </script>
+  </head>
+  <body>
+
+    <h2>3X03 Lab Test</h2>
+
+    <form name="myForm" action="result.php" onsubmit="return validateForm()" method="post">
+      Search: <input type="text" name="searchItem">
+      <input type="submit" value="Submit">
+    </form>
+
+  </body>
 </html>
