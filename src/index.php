@@ -20,7 +20,6 @@
 <body>
 	
 	<div class="container">
-		<h1>PHP Login and Logout with Session</h1>
 		<?php 
 			if(isset($errorMsg))
 			{
