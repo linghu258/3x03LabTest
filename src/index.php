@@ -3,22 +3,9 @@
 	
 	if(isset($_POST['submit']))
 	{
-		if((isset($_POST['email']) && $_POST['email'] !='') && (isset($_POST['password']) && $_POST['password'] !=''))
+		if((isset($_POST['text']) && $_POST['text'] !=''))
 		{
-			$email = trim($_POST['email']);
-			$password = trim($_POST['password']);
-			
-			if($email == "user@example.com")
-			{	
-				if($password == "password1234")
-				{
-					$_SESSION['user_id'] = $email;
-					
-					header('location:dashboard.php');
-					exit;
-					
-				}
-			}
+			$text = trim($_POST['text']);
 			$errorMsg = "Login failed";
 		}
 	}
@@ -27,7 +14,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Login Page | PHP Login and logout example with session</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -43,25 +29,14 @@
 				echo "</div>";
 				unset($errorMsg);
 			}
-			
-			if(isset($_GET['logout']))
-			{
-				echo "<div class='success-msg'>";
-				echo "You have successfully logout";
-				echo "</div>";
-			}
 		?>
 		<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
 			<div class="field-container">
-				<label>Email</label>
-				<input type="email" name="email" required placeholder="Enter Your Email">
+				<label>Search:</label>
+				<input type="text" name="text">
 			</div>
 			<div class="field-container">
-				<label>Password</label>
-				<input type="password" name="password" required placeholder="Enter Your Password">
-			</div>
-			<div class="field-container">
-				<button type="submit" name="submit">Submit</button>
+				<button type="submit" name="submit">Search</button>
 			</div>
 			
 		</form>
